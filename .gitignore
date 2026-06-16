@@ -1,0 +1,6 @@
+# paste this into .gitignore
+__pycache__/
+*.pyc
+.env
+venv/
+.DS_Store
