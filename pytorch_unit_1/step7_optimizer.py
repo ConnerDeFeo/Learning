@@ -1,6 +1,15 @@
 import torch
 import torch.nn as nn
 
+
+# LEARNED:
+# - To find a given gradient we need to look at the mean of (error1 x xi) for each weight.
+#   for example, to find gradient w1, we would need the mean of (error_i X x1_i) so that larger
+#   values effect the gradient more. Larger x value means more importance to the prediction
+#   so the gradient must be larger to account. Take this and multiple by -2 to get the gradient 
+#   for each weight
+# - Next we need adjust the weights by using the learning formula wNew = wOld - (wGradient x learning rate)
+#   After that the weights are updated, and this is the full cycle for machine learning
 layer = nn.Linear(2, 1)
 
 x = torch.tensor([[10.0, 5.0]])
