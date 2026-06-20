@@ -5,6 +5,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
+# LEARNED: 
+# - Standard scaler: scales down data so that the units for all values are equal.
+#   Imagine having some data for years from 20-80 and one for income ranging from
+#   20,000 - 80,000. In absolute terms the money will have a much bigger impact
+#   simply becasue of the units being used. Instead scaler takes the mean and 
+#   standard deviation and scales everything down on a 0-1 scale. where mean = 0
+#   and each std away from the mean is + or - 1. This lets all values regardless 
+#   of unit size have equal impact in reference to how much their deviations have 
+#   an impact on the final result
 # Load the real data, same as your linear regression script
 df = pd.read_csv("../weather.csv")  # adjust path if needed
 df["date"] = pd.to_datetime(df["date"])
