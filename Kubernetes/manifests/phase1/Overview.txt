@@ -1,0 +1,7 @@
+Hierarchy: Cluster --> Node --> Pod --> Container
+
+Labels are the basic query mechanism used for identification.
+Kubernetes is self healing, if a pod diers it will spin up a new one to keep actuall and desired state aligned.
+Speciffically ReplicaSets do the self healing, and deployments wrap these ReplicaSets for controlled changes.
+Services act as load balancers routing traffic from a deignated port to one of N number of pods.
+Namespaces isolate all of this to designated spaces.
