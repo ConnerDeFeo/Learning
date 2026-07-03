@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-course-app
+  labels:
+    app: k8s-course-app
+spec:
+  containers:
+    - name: k8s-course-app
+      image: k8s-course-app:latest
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8000
