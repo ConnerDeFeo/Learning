@@ -1,3 +1,8 @@
 Probes are used by the main Kuberentes controller to check how pods are doing. 
 There are Liveliness probes and readiness probes. Liveliness checks if the pod 
 needs to be restarted and readiness checks if it is ready to accept requests / connections
+
+Requests are used to tell the scheduler how much CPU and ram a given pod needs in a node.
+In other words how much cpu and ram to reserve when running a pod on a node
+
+Limits are the max amount of cpu and ram a pod is allowed to use in a node
