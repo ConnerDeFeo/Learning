@@ -30,3 +30,9 @@ spec:
                 secretKeyRef:
                   name: k8s-course-app-secret
                   key: DB_PASSWORD
+          volumeMounts:
+            - name: scratch
+              mountPath: /data
+      volumes:
+        - name: scratch
+          emptyDir: {}
