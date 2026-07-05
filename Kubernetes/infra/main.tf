@@ -57,6 +57,19 @@ module "eks" {
   }
 }
 
+resource "aws_ecr_repository" "app" {
+  name                 = "k8s-course-app"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+output "ecr_repository_url" {
+  value = aws_ecr_repository.app.repository_url
+}
+
 output "cluster_name" {
   value = module.eks.cluster_name
 }
