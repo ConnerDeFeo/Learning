@@ -1,7 +1,8 @@
 from fastapi import FastAPI
+import os
 
 app = FastAPI()
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "environment": os.getenv("APP_ENV", "unset")}

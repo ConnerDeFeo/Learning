@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-course-app
+  namespace: k8s-course
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-course-app
+  template:
+    metadata:
+      labels:
+        app: k8s-course-app
+    spec:
+      containers:
+        - name: k8s-course-app
+          image: k8s-course-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-course-app-config
+                  key: APP_ENV
