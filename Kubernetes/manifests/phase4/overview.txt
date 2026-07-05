@@ -1,0 +1,1 @@
+Ingress adds routing from outside to inside the cluster
