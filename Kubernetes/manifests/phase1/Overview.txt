@@ -1,4 +1,4 @@
-Hierarchy: Cluster --> Node --> Pod --> Container
+Hierarchy: Cluster --> Node --> Pod / Replica --> Container
 
 Labels are the basic query mechanism used for identification.
 Kubernetes is self healing, if a pod diers it will spin up a new one to keep actuall and desired state aligned.

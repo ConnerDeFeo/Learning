@@ -14,7 +14,7 @@ app = FastAPI(lifespan=lifespan)
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "environment": os.getenv("APP_ENV", "unset")}
+    return {"status": "ok", "environment": os.getenv("APP_ENV", "unset"), "version": "v2"}
 
 @app.get("/ready")
 def readiness():

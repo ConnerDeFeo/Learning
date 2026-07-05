@@ -3,6 +3,13 @@ There are Liveliness probes and readiness probes. Liveliness checks if the pod
 needs to be restarted and readiness checks if it is ready to accept requests / connections
 
 Requests are used to tell the scheduler how much CPU and ram a given pod needs in a node.
-In other words how much cpu and ram to reserve when running a pod on a node
+In other words how much cpu and ram to reserve when running a pod on a node.
+Limits are the max amount of cpu and ram a pod is allowed to use in a node.
 
-Limits are the max amount of cpu and ram a pod is allowed to use in a node
+Rolling updates are pods taking down old pod by replacing replica sets one at a time. 
+Rollbacks allow these changes to be undone by doing the inverse
+
+Horizontal Pod AutoScaller is used to check the CPU utilization for each pod and
+determine if more pods need to be deployed based on thhe total CPU usage. For instance
+if set to 50%, then the HPA will attempt to keep the average CPU usage around 50%. If 
+it croses that threshold more replicas are generated, if less thatn 50 some are taken down.
