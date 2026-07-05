@@ -25,3 +25,8 @@ spec:
                 configMapKeyRef:
                   name: k8s-course-app-config
                   key: APP_ENV
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: k8s-course-app-secret
+                  key: DB_PASSWORD
