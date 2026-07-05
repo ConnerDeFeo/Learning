@@ -1,0 +1,2 @@
+Config maps and secrets externalize env vars outside images
+Persistant volume claims create persistant storage for pods to use
