@@ -26,6 +26,8 @@ spec:
                   key: DB_PASSWORD
             - name: POSTGRES_DB
               value: k8scourse
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/postgresql/data

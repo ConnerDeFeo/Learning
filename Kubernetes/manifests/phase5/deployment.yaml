@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-course-app
+  namespace: k8s-course
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-course-app
+  template:
+    metadata:
+      labels:
+        app: k8s-course-app
+    spec:
+      containers:
+        - name: k8s-course-app
+          image: 857360184083.dkr.ecr.us-east-2.amazonaws.com/k8s-course-app:v2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-course-app-config
+                  key: APP_ENV
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: k8s-course-app-secret
+                  key: DB_PASSWORD
+          volumeMounts:
+            - name: scratch
+              mountPath: /data
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+      volumes:
+        - name: scratch
+          emptyDir: {}
